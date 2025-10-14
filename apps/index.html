@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sistema de Estoque Simples</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Controle de Estoque</h1>
+  <div class="container">
+    <section class="card">
+      <h3>Cadastrar Produto</h3>
+      <input type="text" id="nomeProduto" class="input" placeholder="Nome do produto" />
+      <input type="number" id="quantidadeInicial" class="input" placeholder="Quantidade inicial" />
+      <button id="btnCadastrar" class="btn">Cadastrar</button>
+    </section>
+
+    <section class="card">
+      <h3>Registrar Movimentação</h3>
+      <select id="produtoSelecionado" class="input"></select>
+      <select id="tipoMovimentacao" class="input">
+        <option value="entrada">Entrada</option>
+        <option value="saida">Saída</option>
+      </select>
+      <input type="number" id="quantidadeMov" class="input" placeholder="Quantidade" />
+      <button id="btnMovimentar" class="btn">Registrar</button>
+    </section>
+
+    <section class="card">
+      <h3>Estoque Atual</h3>
+      <table id="tabelaEstoque">
+        <thead>
+          <tr><th>Produto</th><th>Quantidade</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card">
+      <h3>Histórico de Movimentações</h3>
+      <table id="tabelaHistorico">
+        <thead>
+          <tr><th>Produto</th><th>Tipo</th><th>Quantidade</th><th>Data</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

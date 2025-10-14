@@ -1,0 +1,27 @@
+{
+  "name": "projeto-disciplina-prog-framework",
+  "version": "1.0.0",
+  "description": "API simples de estoque (Node + TypeScript, CommonJS)",
+  "main": "dist/servidor.js",
+  "type": "commonjs",
+  "license": "ISC",
+  "author": "",
+  "keywords": [],
+  "scripts": {
+    "dev": "tsx watch src/servidor.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/servidor.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "tsx": "^4.19.0",
+    "typescript": "^5.9.3"
+  }
+}

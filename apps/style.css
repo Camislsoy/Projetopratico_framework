@@ -1,0 +1,50 @@
+
+body{ font-family: Arial, sans-serif; 
+    background: #fafafa; 
+    margin: 0; 
+    padding: 20px; 
+}
+
+h1 { text-align: center; 
+}
+
+.container { max-width: 650px;
+     margin: 0 auto;
+      background: #fff;
+       padding: 20px; 
+       border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+    
+}
+.card { border: 1px solid #e5e7eb;
+     border-radius: 10px; 
+     padding: 16px; 
+     margin: 16px 0; 
+ }
+.input, select, button { width: 100%;
+     padding: 10px; 
+     margin: 6px 0; 
+}
+button { background: #28a745;
+    color: white;
+      border: none; 
+      cursor: pointer; 
+      border-radius: 6px; 
+}
+button:hover { 
+    background: #218838; 
+}
+table { width: 100%;
+     border-collapse: collapse; 
+     margin-top: 10px; 
+}
+th, td { padding: 8px;
+     border-bottom: 1px solid #ddd;
+      text-align: center;
+ }
+.saida { color: #d32f2f;
+     font-weight: 600;
+ }
+.entrada { color: #2e7d32; 
+    font-weight: 600; 
+}
