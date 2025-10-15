@@ -1,13 +1,12 @@
-// ===== Estado em memória =====
-const produtos = [];  // { id, nome, quantidade }
-const historico = []; // { produto, tipo, quantidade, data }
 
-// ===== Utilidades =====
+const produtos = []; 
+const historico = []; 
+
+
 const $ = (id) => document.getElementById(id);
 const agora = () => new Date().toLocaleString();
 const novoId = () => Math.random().toString(36).slice(2, 9);
 
-// ===== Renderizações =====
 function atualizarSelectProdutos() {
   const select = $('produtoSelecionado');
   select.innerHTML = '<option value="">Selecione um produto</option>';
@@ -50,7 +49,7 @@ function atualizarTela() {
   renderizarHistorico();
 }
 
-// ===== Ações =====
+
 function cadastrarProduto() {
   const nome = $('nomeProduto').value.trim();
   const quantidadeInicial = parseInt($('quantidadeInicial').value) || 0;
@@ -84,7 +83,7 @@ function registrarMovimentacao() {
   atualizarTela();
 }
 
-// ===== Eventos =====
+
 window.addEventListener('DOMContentLoaded', () => {
   $('btnCadastrar').addEventListener('click', cadastrarProduto);
   $('btnMovimentar').addEventListener('click', registrarMovimentacao);

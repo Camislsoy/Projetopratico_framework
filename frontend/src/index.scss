@@ -1,0 +1,24 @@
+*
+ { box-sizing: border-box;
+  
+ }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:#f6f7f9; color:#111; }
+.container { max-width: 960px; margin: 0 auto; padding: 24px; }
+.card { background:#fff; border:1px solid #e5e7eb; border-radius:14px; padding:16px; margin:16px 0; box-shadow:0 6px 16px rgba(0,0,0,.04); }
+h1 { text-align:center; margin: 16px 0 24px; }
+h2 { margin:0 0 12px; font-size:20px; }
+.grid { display:grid; gap:12px; }
+.grid-3 { grid-template-columns: 2fr 1fr auto; }
+.grid-4 { grid-template-columns: 2fr 1fr 1fr auto; }
+.input, select, button { width:100%; padding:10px 12px; border-radius:10px; border:1px solid #d1d5db; background:#fff; }
+button { background:#16a34a; color:#fff; border-color:#16a34a; cursor:pointer; }
+button:disabled { opacity:.6; cursor:not-allowed; }
+button:hover:not(:disabled) { filter: brightness(.95); }
+.table { width:100%; border-collapse: collapse; }
+.table th, .table td { border-bottom:1px solid #eee; padding:10px; text-align:left; }
+.table th { background:#fafafa; }
+.status { font-weight:600; }
+.status.entrada { color:#2e7d32; }
+.status.saida { color:#b71c1c; }
+.header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.search { max-width: 260px; }
