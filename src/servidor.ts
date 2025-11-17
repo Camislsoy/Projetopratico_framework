@@ -4,24 +4,22 @@ import { conectarBanco } from './db';
 import { ProdutoModel } from './models/Produtos';
 import { MovimentacaoModel} from './models/Movimentacao';
 
-// utilidades
+
 const agora = () => new Date().toLocaleString();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// saúde
 app.get('/api/saude', (_req, res) => res.json({ ok: true }));
 
-// listar produtos
+
 app.get('/api/produtos', async (_req, res) => {
   const produtos = await ProdutoModel.find().sort({ createdAt: -1 }).lean();
-  // normaliza _id -> id para o front
+
   res.json(produtos.map(p => ({ id: String(p._id), nome: p.nome, quantidade: p.quantidade })));
 });
 
-// criar produto
 app.post('/api/produtos', async (req, res) => {
   const nome: string = String(req.body?.nome || '').trim();
   const quantidadeInicial: number = Number(req.body?.quantidadeInicial || 0);
@@ -32,7 +30,6 @@ app.post('/api/produtos', async (req, res) => {
   return res.status(201).json({ id: String(novo._id), nome: novo.nome, quantidade: novo.quantidade });
 });
 
-// listar movimentações (mais recentes primeiro)
 app.get('/api/movimentacoes', async (_req, res) => {
   const movs = await MovimentacaoModel.find().sort({ _id: -1 }).limit(200).lean();
   res.json(movs.map(m => ({
@@ -45,7 +42,7 @@ app.get('/api/movimentacoes', async (_req, res) => {
   })));
 });
 
-// criar movimentação (atualiza saldo de forma atômica)
+
 app.post('/api/movimentacoes', async (req, res) => {
   const idProduto = String(req.body?.idProduto || '');
   const tipo = String(req.body?.tipo);
@@ -54,7 +51,7 @@ app.post('/api/movimentacoes', async (req, res) => {
   if (!['entrada', 'saida'].includes(tipo)) return res.status(400).json({ mensagem: 'Tipo inválido.' });
   if (quantidade <= 0) return res.status(400).json({ mensagem: 'Quantidade deve ser maior que zero.' });
 
-  // para saída, garante estoque suficiente no filtro
+ 
   const inc = tipo === 'entrada' ? quantidade : -quantidade;
   const filtro: any = { _id: idProduto };
   if (tipo === 'saida') filtro.quantidade = { $gte: quantidade };
@@ -62,11 +59,11 @@ app.post('/api/movimentacoes', async (req, res) => {
   const produtoAtualizado = await ProdutoModel.findOneAndUpdate(
     filtro,
     { $inc: { quantidade: inc } },
-    { new: true } // retorna o documento já atualizado
+    { new: true } 
   );
 
   if (!produtoAtualizado) {
-    // ou produto inexistente ou estoque insuficiente
+   
     const existe = await ProdutoModel.exists({ _id: idProduto });
     return res.status(existe ? 400 : 404).json({
       mensagem: existe ? 'Estoque insuficiente para saída.' : 'Produto não encontrado.'
